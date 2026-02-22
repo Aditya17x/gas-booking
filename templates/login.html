@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<style>
+body{
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial;
+overflow:hidden;
+}
+
+/* floating circles */
+.circle{
+position:absolute;
+width:140px;
+height:140px;
+border-radius:50%;
+background:rgba(255,255,255,.2);
+filter:blur(10px);
+animation:move 6s infinite alternate;
+}
+
+.circle:nth-child(1){top:10%;left:15%}
+.circle:nth-child(2){bottom:15%;right:20%;animation-delay:2s}
+
+@keyframes move{
+0%{transform:translateY(0)}
+100%{transform:translateY(50px)}
+}
+
+/* GLASS CARD */
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+padding:40px;
+width:340px;
+border-radius:18px;
+color:white;
+border:1px solid rgba(255,255,255,.3);
+box-shadow:0 20px 50px rgba(0,0,0,.6);
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+.pass-box{
+position:relative;
+}
+
+.eye{
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size:18px;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+letter-spacing:1px;
+}
+
+/* inputs */
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:rgba(255,255,255,.2);
+color:white;
+outline:none;
+}
+
+input::placeholder{
+color:#ddd;
+}
+
+/* button */
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#38bdf8;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#0ea5e9;
+transform:scale(1.05);
+box-shadow:0 0 15px #38bdf8;
+}
+
+.error{
+color:#ff4d4d;
+text-align:center;
+margin-bottom:10px;
+}
+
+a{
+color:#f472b6;
+text-decoration:none;
+font-weight:bold;
+}
+
+a:hover{
+text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="card">
+<h2>Welcome Back 👋</h2>
+
+<!-- ERROR MESSAGE -->
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+<input type="text" name="identity"
+placeholder="Email or Username" required>
+
+<div class="pass-box">
+<input type="password" name="password"
+id="loginPwd" placeholder="Password" required>
+<span class="eye" onclick="toggle()">👁</span>
+</div>
+
+<button>Login</button>
+
+<p style="text-align:center;margin-top:12px;">
+<a href="/forgot">Forgot?</a> |
+<a href="/register">Register</a>
+</p>
+
+</form>
+</div>
+
+<script>
+function toggle(){
+ let x = document.getElementById("loginPwd");
+ x.type = x.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Safety Tips</title>
+
+<style>
+body{
+margin:0;
+font-family:Poppins,Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+min-height:100vh;
+padding:25px;
+color:white;
+overflow:hidden;
+}
+
+/* floating blobs */
+.blob{
+position:absolute;
+width:200px;height:200px;
+background:#38bdf8;
+border-radius:50%;
+filter:blur(80px);
+animation:float 10s infinite alternate;
+opacity:.5;
+}
+.blob:nth-child(1){top:10%;left:5%}
+.blob:nth-child(2){bottom:10%;right:5%;animation-delay:3s}
+
+@keyframes float{
+from{transform:translateY(0)}
+to{transform:translateY(-60px)}
+}
+
+/* BACK BUTTON */
+.back-btn{
+display:inline-block;
+margin-bottom:20px;
+background:rgba(255,255,255,.15);
+padding:8px 18px;
+border-radius:20px;
+color:white;
+text-decoration:none;
+border:1px solid rgba(255,255,255,.3);
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#38bdf8;
+color:black;
+transform:scale(1.1);
+}
+
+/* heading */
+h1{
+text-align:center;
+letter-spacing:1px;
+margin-bottom:25px;
+}
+
+/* grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+z-index:5;
+position:relative;
+}
+
+/* glass cards */
+.card{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+padding:18px;
+border-radius:16px;
+box-shadow:0 0 25px rgba(0,0,0,.6);
+transition:.4s;
+animation:pop .8s ease;
+border:1px solid rgba(255,255,255,.2);
+}
+
+.card:hover{
+transform:scale(1.08);
+box-shadow:0 0 35px #38bdf8;
+}
+
+@keyframes pop{
+from{opacity:0;transform:scale(.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+.card h3{
+margin:0 0 10px;
+}
+
+li{
+margin:6px 0;
+font-size:14px;
+opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob"></div>
+<div class="blob"></div>
+
+<!-- BACK BUTTON -->
+<a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+<h1>🔥 LPG SAFETY TIPS</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>📦 Cylinder Storage</h3>
+<ul>
+<li>Keep cylinder upright always</li>
+<li>Store away from direct sunlight</li>
+<li>Keep in well-ventilated area</li>
+<li>Never store in bathroom</li>
+<li>Keep away from heat sources</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🔥 Fire Prevention</h3>
+<ul>
+<li>Never leave stove unattended</li>
+<li>Keep curtains away</li>
+<li>Have fire extinguisher</li>
+<li>Clean grease regularly</li>
+<li>Do not overload plug points</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🌬 Proper Ventilation</h3>
+<ul>
+<li>Open windows while cooking</li>
+<li>Use exhaust fan</li>
+<li>Never block air vents</li>
+<li>Allow fresh air flow</li>
+<li>Keep kitchen airy</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🔧 Regulator Safety</h3>
+<ul>
+<li>Check cracks regularly</li>
+<li>Replace damaged pipe</li>
+<li>Use ISI regulators</li>
+<li>Turn off after use</li>
+<li>Tighten properly</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🧯 Emergency Handling</h3>
+<ul>
+<li>Do not panic</li>
+<li>Turn off main valve</li>
+<li>Open doors & windows</li>
+<li>Do NOT use switches</li>
+<li>Move outside if needed</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>👃 Gas Leak Detection</h3>
+<ul>
+<li>Smell for LPG odor</li>
+<li>Apply soap solution</li>
+<li>Bubbles mean leakage</li>
+<li>Never use matchstick</li>
+<li>Call gas agency</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>⚡ Electrical Safety</h3>
+<ul>
+<li>Keep wires away from stove</li>
+<li>Do not touch with wet hands</li>
+<li>Switch off after use</li>
+<li>Use quality sockets</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>👶 Child Safety</h3>
+<ul>
+<li>Keep stove out of reach</li>
+<li>Use safety locks</li>
+<li>Do not allow kids near flame</li>
+<li>Educate about danger</li>
+</ul>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Emergency Contacts</title>
+
+<style>
+body{
+margin:0;
+font-family:Poppins,Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+min-height:100vh;
+padding:25px;
+color:white;
+overflow:hidden;
+}
+
+/* floating blobs */
+.blob{
+position:absolute;
+width:220px;height:220px;
+background:#f43f5e;
+border-radius:50%;
+filter:blur(90px);
+animation:float 12s infinite alternate;
+opacity:.45;
+}
+.blob:nth-child(1){top:5%;left:5%}
+.blob:nth-child(2){bottom:10%;right:5%;animation-delay:3s}
+
+@keyframes float{
+from{transform:translateY(0)}
+to{transform:translateY(-70px)}
+}
+
+/* BACK BUTTON */
+.back-btn{
+display:inline-block;
+margin-bottom:20px;
+background:rgba(255,255,255,.15);
+padding:8px 18px;
+border-radius:20px;
+color:white;
+text-decoration:none;
+border:1px solid rgba(255,255,255,.3);
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#f43f5e;
+transform:scale(1.1);
+}
+
+/* heading */
+h1{
+text-align:center;
+margin-bottom:25px;
+letter-spacing:1px;
+}
+
+/* grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+z-index:5;
+position:relative;
+}
+
+/* glass cards */
+.card{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+padding:18px;
+border-radius:16px;
+box-shadow:0 0 25px rgba(0,0,0,.6);
+transition:.4s;
+animation:pop .8s ease;
+border:1px solid rgba(255,255,255,.25);
+text-align:center;
+}
+
+.card:hover{
+transform:scale(1.08);
+box-shadow:0 0 40px #f43f5e;
+}
+
+@keyframes pop{
+from{opacity:0;transform:scale(.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+.card h3{
+margin:0 0 8px;
+}
+
+.number{
+font-size:22px;
+font-weight:bold;
+color:#38bdf8;
+margin-bottom:6px;
+}
+
+.call{
+margin-top:8px;
+padding:8px 14px;
+border:none;
+border-radius:8px;
+background:#22c55e;
+color:black;
+cursor:pointer;
+transition:.3s;
+}
+
+.call:hover{
+background:#16a34a;
+transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob"></div>
+<div class="blob"></div>
+
+<!-- BACK BUTTON -->
+<a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+<h1>🚨 Emergency Contacts</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>🔥 Fire Brigade</h3>
+<div class="number">101</div>
+<button class="call" onclick="location.href='tel:101'">Call</button>
+</div>
+
+<div class="card">
+<h3>🚑 Ambulance</h3>
+<div class="number">102</div>
+<button class="call" onclick="location.href='tel:102'">Call</button>
+</div>
+
+<div class="card">
+<h3>🚓 Police</h3>
+<div class="number">100</div>
+<button class="call" onclick="location.href='tel:100'">Call</button>
+</div>
+
+<div class="card">
+<h3>🆘 National Helpline</h3>
+<div class="number">112</div>
+<button class="call" onclick="location.href='tel:112'">Call</button>
+</div>
+
+<div class="card">
+<h3>🔥 Gas Emergency</h3>
+<div class="number">1906</div>
+<button class="call" onclick="location.href='tel:1906'">Call</button>
+</div>
+
+<div class="card">
+<h3>🏥 Hospital</h3>
+<div class="number">108</div>
+<button class="call" onclick="location.href='tel:108'">Call</button>
+</div>
+
+<div class="card">
+<h3>⚡ Electricity</h3>
+<div class="number">1912</div>
+<button class="call" onclick="location.href='tel:1912'">Call</button>
+</div>
+
+<div class="card">
+<h3>🚒 Disaster Control</h3>
+<div class="number">1070</div>
+<button class="call" onclick="location.href='tel:1070'">Call</button>
+</div>
+
+</div>
+
+</body>
+</html>

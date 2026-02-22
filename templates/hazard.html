@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hazard Prevention</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:90%;
+    max-width:420px;
+    background:#0f172a;
+    padding:25px;
+    border-radius:20px;
+    color:white;
+    box-shadow:0 25px 60px rgba(0,0,0,.6);
+    animation:pop .8s ease;
+}
+
+@keyframes pop{
+    0%{transform:scale(.8);opacity:0}
+    100%{transform:scale(1);opacity:1}
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.cards{
+    display:grid;
+    gap:15px;
+}
+
+.card{
+    background:#111827;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,.5);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 40px rgba(0,0,0,.8);
+}
+
+.card h3{
+    margin:0;
+}
+
+.card p{
+    font-size:14px;
+    color:#cbd5f5;
+}
+
+.btn{
+    margin-top:12px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+/* Colors */
+.gas{background:#f59e0b;}
+.smoke{background:#9ca3af;}
+.heat{background:#fb7185;}
+
+.btn:hover{
+    transform:scale(1.05);
+    filter:brightness(1.1);
+}
+
+.back{
+    margin-top:20px;
+    width:100%;
+    background:#38bdf8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🚨 Hazard Prevention System</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🔥 Gas Leak</h3>
+<p>Handle LPG leakage scenarios safely</p>
+<a href="/hazard/gas">
+<button class="btn gas">Check Now</button>
+</a>
+</div>
+
+<div class="card">
+<h3>💨 Smoke</h3>
+<p>Fire & smoke safety guidance</p>
+<a href="/hazard/smoke">
+<button class="btn smoke">Check Now</button>
+</a>
+</div>
+
+<div class="card">
+<h3>🌡 High Temperature</h3>
+<p>Overheating & ventilation issues</p>
+<a href="/hazard/heat">
+<button class="btn heat">Check Now</button>
+</a>
+</div>
+
+</div>
+
+<a href="/dashboard">
+<button class="btn back">⬅ Back to Dashboard</button>
+</a>
+
+</div>
+
+</body>
+</html>

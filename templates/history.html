@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Bookings</title>
+
+<style>
+body{
+margin:0;
+min-height:100vh;
+font-family:Poppins,Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+padding:20px;
+color:white;
+}
+
+/* floating blobs */
+.blob{
+position:absolute;
+width:200px;height:200px;
+background:#38bdf8;
+border-radius:50%;
+filter:blur(80px);
+opacity:.4;
+animation:float 10s infinite alternate;
+}
+.blob:nth-child(1){top:10%;left:5%}
+.blob:nth-child(2){bottom:10%;right:5%;animation-delay:3s}
+
+@keyframes float{
+from{transform:translateY(0)}
+to{transform:translateY(-60px)}
+}
+
+.container{
+max-width:900px;
+margin:auto;
+position:relative;
+z-index:5;
+}
+
+/* BACK BUTTON */
+.back-btn{
+display:inline-block;
+margin-bottom:15px;
+background:rgba(255,255,255,.15);
+padding:8px 18px;
+border-radius:20px;
+color:white;
+text-decoration:none;
+border:1px solid rgba(255,255,255,.3);
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#38bdf8;
+color:black;
+transform:scale(1.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+letter-spacing:1px;
+}
+
+/* glass cards */
+.card{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+border-radius:16px;
+padding:15px;
+margin-bottom:15px;
+box-shadow:0 0 25px rgba(0,0,0,.6);
+animation:pop .6s ease;
+border-left:6px solid #38bdf8;
+transition:.4s;
+}
+
+.card:hover{
+transform:scale(1.03);
+box-shadow:0 0 35px #38bdf8;
+}
+
+@keyframes pop{
+from{opacity:0;transform:scale(.9)}
+to{opacity:1;transform:scale(1)}
+}
+
+.row{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+font-size:14px;
+}
+
+.badge{
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+display:inline-block;
+}
+
+.pay{
+background:#22c55e;
+color:black;
+}
+
+.pending{
+background:#facc15;
+color:black;
+}
+
+.btn{
+margin-top:10px;
+background:#ef4444;
+border:none;
+color:white;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+background:#dc2626;
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob"></div>
+<div class="blob"></div>
+
+<div class="container">
+
+<!-- BACK BUTTON -->
+<a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+<h1>📜 My Booking History</h1>
+
+{% if bookings %}
+
+{% for i in bookings %}
+<div class="card">
+
+<div class="row">
+<div><b>ID</b><br>{{i[0]}}</div>
+<div><b>Name</b><br>{{i[1]}}</div>
+<div><b>City</b><br>{{i[4]}}</div>
+<div><b>Type</b><br>{{i[5]}}</div>
+<div><b>Company</b><br>{{i[6]}}</div>
+<div><b>Qty</b><br>{{i[7]}}</div>
+<div>
+<b>Payment</b><br>
+<span class="badge pay">{{i[11]}}</span>
+</div>
+<div><b>Date</b><br>{{i[8]}}</div>
+</div>
+
+<form action="/cancel/{{i[0]}}" method="POST">
+    <button class="btn">Cancel</button>
+</form>
+
+</div>
+{% endfor %}
+
+{% else %}
+<p style="text-align:center">No bookings yet 😢</p>
+{% endif %}
+
+</div>
+
+</body>
+</html>

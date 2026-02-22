@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+background:linear-gradient(135deg,#ff512f,#dd2476);
+font-family:'Poppins',sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+/* ===== TOP GLASS TITLE ===== */
+.main-title{
+position:absolute;
+top:30px;
+padding:18px 55px;
+border-radius:45px;
+
+/* TEXT */
+font-size:26px;
+font-weight:900;
+letter-spacing:2px;
+text-transform:uppercase;
+color:white;
+
+/* GLASS */
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+
+/* BORDER */
+border:1px solid rgba(255,255,255,0.35);
+
+/* GLOW */
+box-shadow:
+0 0 15px rgba(56,189,248,.8),
+0 0 40px rgba(236,72,153,.6);
+
+overflow:hidden;
+transition:.4s;
+}
+
+/* AUTO SHINE */
+.main-title::before{
+content:"";
+position:absolute;
+top:0;
+left:-60%;
+width:50%;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.7),
+transparent
+);
+animation:shine 5s infinite;
+}
+
+/* HOVER SHINE */
+.main-title:hover::before{
+animation:shine 1s;
+}
+
+/* EXTRA GLOW */
+.main-title:hover{
+box-shadow:
+0 0 25px rgba(56,189,248,1),
+0 0 60px rgba(236,72,153,1);
+transform:scale(1.05);
+}
+
+/* SHINE ANIMATION */
+@keyframes shine{
+0%{left:-60%}
+100%{left:130%}
+}
+
+/* ===== GLASS BOX ===== */
+.box{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(18px);
+padding:45px;
+width:380px;
+text-align:center;
+border-radius:20px;
+color:white;
+box-shadow:0 25px 60px rgba(0,0,0,.7);
+border:1px solid rgba(255,255,255,.25);
+animation:zoom 1s ease;
+}
+
+@keyframes zoom{
+0%{transform:scale(.6);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+
+h1{
+font-size:26px;
+margin-bottom:10px;
+}
+
+p{
+color:#e5e7eb;
+margin-bottom:25px;
+}
+
+/* BUTTONS */
+.btn{
+display:flex;
+gap:15px;
+}
+
+a{
+flex:1;
+text-decoration:none;
+padding:12px;
+border-radius:10px;
+color:white;
+font-weight:bold;
+transition:.3s;
+}
+
+.login{background:#3b82f6}
+.register{background:#ec4899}
+
+a:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px white;
+}
+
+/* FLOATING BUBBLES */
+.bubble{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,.18);
+filter:blur(5px);
+animation:float 7s infinite ease-in-out;
+}
+
+.bubble:nth-child(1){
+width:120px;height:120px;
+left:8%;top:18%;
+}
+
+.bubble:nth-child(2){
+width:80px;height:80px;
+right:12%;bottom:25%;
+animation-delay:2s;
+}
+
+.bubble:nth-child(3){
+width:60px;height:60px;
+left:40%;bottom:10%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-30px)}
+100%{transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP TITLE -->
+<div class="main-title">
+GAS BOOKING & HAZARDOUS PREVENTION SYSTEM
+</div>
+
+<!-- BUBBLES -->
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+
+<!-- MAIN CARD -->
+<div class="box">
+
+<h1>🔥 Gas Booking System</h1>
+<p>Secure your booking & stay safe</p>
+
+<div class="btn">
+<a href="/login" class="login">Login</a>
+<a href="/register" class="register">Register</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at top,#0f2027,#020617);
+font-family:Poppins,Arial;
+overflow:hidden;
+color:white;
+}
+
+/* glowing orbs */
+.orb{
+position:absolute;
+border-radius:50%;
+filter:blur(40px);
+opacity:.6;
+animation:move 10s infinite alternate;
+z-index:1;
+}
+
+.orb1{
+width:200px;height:200px;
+background:#38bdf8;
+top:10%;left:10%;
+}
+
+.orb2{
+width:160px;height:160px;
+background:#f472b6;
+bottom:15%;right:15%;
+animation-delay:3s;
+}
+
+@keyframes move{
+from{transform:translateY(0)}
+to{transform:translateY(-60px)}
+}
+
+/* main card */
+.card{
+background:#020617;
+padding:35px;
+width:390px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(56,189,248,.4);
+animation:zoom .8s ease;
+z-index:5;
+position:relative;
+}
+
+@keyframes zoom{
+from{transform:scale(.8);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+h2{
+text-align:center;
+background:linear-gradient(90deg,#38bdf8,#f472b6);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+p{text-align:center;color:#94a3b8}
+
+/* grid */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:18px;
+}
+
+.box{
+background:#0f172a;
+padding:15px;
+border-radius:14px;
+text-align:center;
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,.6);
+}
+
+.box:hover{
+transform:translateY(-8px) scale(1.05);
+box-shadow:0 0 20px #38bdf8;
+background:#1e293b;
+}
+
+/* buttons */
+button{
+margin-top:8px;
+padding:8px 16px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+color:black;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px #38bdf8;
+}
+
+/* logout */
+.logout{
+margin-top:20px;
+width:100%;
+background:linear-gradient(135deg,#ef4444,#dc2626);
+color:white;
+}
+
+/* ================= CHATBOT ================= */
+
+/* FLOAT BUTTON */
+.chat-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#1e40af);
+color:white;
+border:none;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 0 25px #2563eb;
+z-index:9999;
+}
+
+/* MAIN BOT */
+.safety-bot{
+width:330px;
+height:450px;
+position:fixed;
+right:20px;
+bottom:90px;
+
+background:linear-gradient(
+135deg,
+rgba(15,23,42,0.9),
+rgba(2,6,23,0.85)
+);
+
+backdrop-filter:blur(30px);
+border-radius:22px;
+border:1px solid rgba(255,255,255,0.15);
+
+box-shadow:
+0 25px 50px rgba(0,0,0,0.7),
+inset 0 0 0 1px rgba(255,255,255,0.1);
+
+display:none;
+flex-direction:column;
+overflow:hidden;
+animation:pop .5s ease;
+color:white;
+z-index:9999;
+}
+
+/* HEADER */
+.bot-head{
+background:linear-gradient(135deg,#2563eb,#1e40af);
+padding:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.bot-head span{
+font-weight:bold;
+}
+
+/* CHAT AREA */
+.chat-area{
+flex:1;
+padding:12px;
+overflow-y:auto;
+}
+
+/* MESSAGES */
+.bot{
+background:rgba(255,255,255,.12);
+padding:8px 12px;
+border-radius:12px;
+margin:6px 0;
+width:85%;
+}
+
+.user{
+background:linear-gradient(135deg,#2563eb,#1e40af);
+padding:8px 12px;
+border-radius:12px;
+margin:6px 0;
+width:85%;
+margin-left:auto;
+text-align:right;
+}
+
+/* QUICK BUTTONS */
+.quick{
+margin-top:10px;
+}
+
+.quick button{
+width:100%;
+margin:5px 0;
+padding:8px;
+border-radius:10px;
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.2);
+color:white;
+cursor:pointer;
+}
+
+.quick button:hover{
+background:#2563eb;
+}
+
+/* INPUT */
+.bot-input{
+display:flex;
+padding:10px;
+background:rgba(255,255,255,.05);
+border-top:1px solid rgba(255,255,255,.15);
+}
+
+.bot-input input{
+flex:1;
+padding:8px;
+border:none;
+border-radius:8px;
+background:transparent;
+color:white;
+outline:none;
+}
+
+.bot-input button{
+background:#2563eb;
+border:none;
+color:white;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- DASHBOARD -->
+<div class="card">
+
+<h2>Hello, {{name}} 👋</h2>
+<p>Welcome to Gas Booking & Hazard Prevention Dashboard</p>
+
+<div class="grid">
+
+<div class="box">
+<h4>🔥 Gas Bookings</h4>
+<p>Manage your bookings</p>
+<button onclick="location.href='/booking'">New Booking</button>
+<button onclick="location.href='/history'">History</button>
+</div>
+
+<div class="box">
+<h4>⚠️Hazard Prevention</h4>
+<p>Safety alerts system</p>
+<button onclick="location.href='/hazard'">Open</button>
+</div>
+
+<div class="box">
+<h4>🛡 Safety Tips</h4>
+<p>Learn prevention</p>
+<button onclick="location.href='/tips'">View</button>
+</div>
+
+<div class="box">
+<h4>🚨 Emergency</h4>
+<p>Quick help</p>
+<button onclick="location.href='/emergency'">Call</button>
+</div>
+
+<div class="box">
+<h4>👤 Account</h4>
+<p>Profile settings</p>
+<button>Coming soon</button>
+</div>
+
+<div class="box">
+<h4>📞 Support</h4>
+<p>Help & contact</p>
+<button>Contact</button>
+</div>
+
+</div>
+
+<button class="logout" onclick="location.href='/logout'">
+Logout
+</button>
+
+</div>
+
+<!-- FLOAT BUTTON -->
+<button class="chat-btn" onclick="toggleBot()">💬</button>
+
+<!-- CHATBOT -->
+<div class="safety-bot" id="bot">
+
+<div class="bot-head">
+<span>🛡 Safety Assistant</span>
+<button onclick="toggleBot()" style="background:none;border:none;color:white">✖</button>
+</div>
+
+<div class="chat-area" id="chat">
+
+<div class="bot">
+Hello! I'm your safety assistant 👋<br>
+How can I help you today?
+</div>
+
+<div class="quick">
+<button onclick="reply('I smell gas')">I smell gas</button>
+<button onclick="reply('Kitchen fire safety')">Kitchen fire safety</button>
+<button onclick="reply('Gas cylinder tips')">Gas cylinder tips</button>
+<button onclick="reply('Emergency contacts')">Emergency contacts</button>
+</div>
+
+</div>
+
+<div class="bot-input">
+<input id="msg" placeholder="Ask a safety question...">
+<button onclick="send()">➤</button>
+</div>
+
+</div>
+
+<script>
+function toggleBot(){
+let bot=document.getElementById("bot");
+bot.style.display = bot.style.display=="flex"?"none":"flex";
+}
+
+function send(){
+let input=document.getElementById("msg");
+let text=input.value;
+if(text=="")return;
+
+addUser(text);
+autoReply(text);
+input.value="";
+}
+
+function reply(text){
+addUser(text);
+autoReply(text);
+}
+
+function addUser(text){
+let div=document.createElement("div");
+div.className="user";
+div.innerText=text;
+document.getElementById("chat").appendChild(div);
+scrollDown();
+}
+
+function addBot(text){
+let div=document.createElement("div");
+div.className="bot";
+div.innerText=text;
+document.getElementById("chat").appendChild(div);
+scrollDown();
+}
+
+function autoReply(q){
+
+q=q.toLowerCase();
+
+if(q.includes("smell")){
+addBot("⚠ Turn off gas immediately. Open windows. Do NOT use electrical switches.");
+}
+
+else if(q.includes("fire")){
+addBot("🔥 Never pour water on oil fire. Cover pan. Use extinguisher.");
+}
+
+else if(q.includes("tips")){
+addBot("✔ Check pipe leaks\n✔ Keep cylinder upright\n✔ Close valve after use");
+}
+
+else if(q.includes("emergency")){
+addBot("📞 Fire: 101\n📞 Police: 100\n📞 Ambulance: 108");
+}
+
+else{
+addBot("I'm here for safety help only 😊");
+}
+
+}
+
+function scrollDown(){
+let chat=document.getElementById("chat");
+chat.scrollTop=chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>

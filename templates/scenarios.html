@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scenarios</title>
+</head>
+<body>
+
+<div class="card">
+<h3>Select Scenario</h3>
+
+<form method="POST" action="/hazard/{{type}}/check">
+
+{% if type=="gas" %}
+<select name="scenario">
+<option>Smell near stove</option>
+<option>Smell near cylinder</option>
+<option>Smell in closed room</option>
+<option>After cylinder change</option>
+</select>
+
+{% elif type=="smoke" %}
+<select name="scenario">
+<option>Electrical short</option>
+<option>Burning food</option>
+<option>Unknown smoke</option>
+</select>
+
+{% else %}
+<select name="scenario">
+<option>Room overheating</option>
+<option>Poor ventilation</option>
+<option>Heat near stove</option>
+</select>
+{% endif %}
+
+<h4>How strong?</h4>
+<select name="level">
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+</select>
+
+<button>Check Safety</button>
+
+</form>
+</div>
+
+</body>
+</html>

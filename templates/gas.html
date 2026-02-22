@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gas Leak</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#3b1d0f;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* floating circles */
+.circle{
+position:absolute;
+width:200px;
+height:200px;
+background:rgba(255,150,50,.15);
+border-radius:50%;
+animation:float 10s infinite linear;
+}
+.circle:nth-child(1){top:10%;left:-50px;}
+.circle:nth-child(2){bottom:15%;right:-60px;animation-delay:3s;}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-40px)}
+100%{transform:translateY(0)}
+}
+
+.card{
+background:#1c0b04;
+color:white;
+padding:30px;
+border-radius:18px;
+width:90%;
+max-width:380px;
+box-shadow:0 0 40px rgba(255,120,0,.6);
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 20px #ff7b00}
+50%{box-shadow:0 0 50px #ff4500}
+100%{box-shadow:0 0 20px #ff7b00}
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:10px;
+background:#ff7b00;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+button:hover{
+transform:scale(1.05);
+background:#ff4500;
+}
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="card">
+<h2>🔥 Gas Leak Detected</h2>
+<p>Where do you smell gas?</p>
+
+<form method="POST" action="/hazard/gas/check">
+
+<button name="scenario" value="Near stove">Near Stove</button>
+<button name="scenario" value="Near cylinder">Near Cylinder</button>
+<button name="scenario" value="Closed room">Closed Room</button>
+<button name="scenario" value="After cylinder change">After Cylinder Change</button>
+
+<input type="hidden" name="level" value="High">
+
+</form>
+</div>
+
+</body>
+</html>

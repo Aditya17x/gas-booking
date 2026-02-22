@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smoke Alert</title>
+
+<style>
+body{
+margin:0;
+background:#2f2f2f;
+font-family:Arial;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.smoke{
+position:absolute;
+width:120%;
+height:200px;
+background:rgba(255,255,255,.1);
+top:20%;
+filter:blur(40px);
+animation:smoke 6s infinite;
+}
+
+@keyframes smoke{
+0%{left:-100%}
+100%{left:100%}
+}
+
+.card{
+background:#111;
+color:white;
+padding:30px;
+border-radius:18px;
+width:90%;
+max-width:380px;
+box-shadow:0 0 50px gray;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:10px;
+background:#9ca3af;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="smoke"></div>
+
+<div class="card">
+<h2>💨 Smoke Detected</h2>
+
+<form method="POST" action="/hazard/smoke/check">
+
+<button name="scenario" value="Electrical short">Electrical Short</button>
+<button name="scenario" value="Burning food">Burning Food</button>
+<button name="scenario" value="Unknown source">Unknown Source</button>
+
+<input type="hidden" name="level" value="Medium">
+
+</form>
+
+</div>
+
+</body>
+</html>
